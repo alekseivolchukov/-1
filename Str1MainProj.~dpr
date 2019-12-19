@@ -1,0 +1,12 @@
+program MainProj;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  UComplex in 'UComplex.pas',
+  UComplexOperations in 'UComplexOperations.pas';
+
+begin
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

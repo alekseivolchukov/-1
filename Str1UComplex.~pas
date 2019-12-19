@@ -1,0 +1,51 @@
+unit UComplex;
+
+interface
+
+type
+  TComplex = record
+    realPart: real;
+    imagPart: real;
+   end;
+
+// Инициализация комплексного числа
+procedure InitComplex(var z:Tcomplex; ARealPart, AImagPart: real);
+
+// Печать комплексного числа
+procedure WriteComplex(var z:Tcomplex);
+
+// Чтение комплексного числа
+procedure ReadComplex(txt:string; var z:Tcomplex);
+
+implementation
+
+procedure InitComplex;
+begin
+  z.realPart := ARealPart;
+  z.imagPart := AImagPart;
+end;
+
+procedure WriteComplex;
+begin
+  if (z.imagPart < 0) then
+    write(z.realPart:0:2, ' - ', -z.imagPart:0:2, 'i')
+  else
+    write(z.realPart:0:2, ' + ', z.imagPart:0:2, 'i');
+  writeln;
+end;
+
+procedure ReadComplex;
+begin
+  if txt <> '' then
+    writeln(txt);
+  write('Введите реальную часть числа: ');
+  readln(z.realPart);
+  write('Введите комплексую часть числа: ');
+  readln(z.imagPart);
+  write('Вы ввели комплескное число: ');
+  WriteComplex(z);
+end;
+
+
+end.
+
