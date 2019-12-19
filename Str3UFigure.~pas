@@ -1,0 +1,47 @@
+unit UFigure;
+
+interface
+
+uses
+  SysUtils, Graphics;
+
+type
+
+TPoint = record
+  X:integer;
+  Y:integer;
+end;
+
+TFigure = class
+private
+  FPoint: TPoint;
+  FColor: TColor;
+public
+  constructor Create(APoint: TPoint; AColor:TColor);
+  function Area:real; virtual; abstract;
+
+property point:TPoint
+read FPoint write FPoint;
+property color:TColor
+read FColor write FColor;
+
+end;
+
+function InitPoint(X,Y:integer):TPoint;
+
+implementation
+
+function InitPoint(X, Y:integer):TPoint;
+begin
+  Result.X:= X;
+  Result.Y:= Y;
+end;
+
+constructor TFigure.Create(APoint: TPoint; AColor:TColor);
+begin
+  FPoint:= APoint;
+  FColor:= AColor;
+end;
+
+end.
+ 

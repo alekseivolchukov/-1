@@ -1,0 +1,90 @@
+unit UMainForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, UFigure, UCircle, URectangle, UTriangle,
+  UFigForm;
+
+const
+  MaxN = 100;
+
+type
+  TMainForm = class(TForm)
+    image: TImage;
+    rgFig: TRadioGroup;
+    lbPoint: TLabel;
+    edPoint: TEdit;
+    lbSecondPoint: TLabel;
+    edSecondPoint: TEdit;
+    lbColor: TLabel;
+    cbColor: TComboBox;
+    lbThirdPoint: TLabel;
+    edThirdPoint: TEdit;
+    btAdd: TButton;
+    btExit: TButton;
+    btClear: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure btExitClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MainForm: TMainForm;
+  FigureArray: array[1..MaxN] of TFigure;
+  count: integer;
+
+implementation
+
+{$R *.dfm}
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var
+  rect: TRect;
+begin
+  Rect.Left:=0;
+  Rect.Top:=0;
+  Rect.Right:=Image.Width;
+  Rect.Bottom:=Image.Height;
+  Image.Canvas.Brush.Color:=clWhite;
+  image.Canvas.FillRect(rect);
+  count:= 0;
+  rgFig.ItemIndex:= 0;
+  cbColor.ItemIndex:= 0;
+end;
+
+procedure CircleSelected;
+begin
+  ClearAll;
+  lbSecondPoint.Caption:= 'Радиус';
+  lbThirdPoint.Visible:= false;
+  edThirdPoint.Visible:= false;
+end;
+
+procedure RectangleSelected;
+begin
+  ClearAll;
+  lbSecondPoint.Caption:= 'Вторая точка';
+  lbThirdPoint.Visible:= false;
+  edThirdPoint.Visible:= false;
+end;
+
+procedure TriangleSelected;
+begin
+  ClearAll;
+  lbSecondPoint.Caption:= 'Вторая точка';
+  lbThirdPoint.Visible:= true;
+  lbThirdPoint.Caption:= 'Третья точка';
+  edThirdPoint.Visible:= true;
+end;
+
+procedure TMainForm.btExitClick(Sender: TObject);
+begin
+  Close;
+end;
+
+end.

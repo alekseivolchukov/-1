@@ -1,0 +1,39 @@
+unit UCircle;
+
+interface
+
+uses
+  UFigure, SysUtils, Graphics;
+const
+  Pi = 3.1415;
+
+type
+
+TCircle = class(TFigure)
+private
+  FRadius: integer;
+public
+  constructor Create(APoint: TPoint; AColor:TColor; ARadius:integer);
+  function Area:real; override;
+property radius:integer
+read FRadius write FRadius;
+
+end;
+
+implementation
+
+constructor TCircle.Create(APoint: TPoint; AColor:TColor; ARadius:integer);
+begin
+  inherited Create(APoint, AColor);
+  FRadius:= ARadius;
+end;
+
+function TCircle.Area:real;
+begin
+  Result:= Pi * sqr(radius);
+end;
+
+
+
+end.
+ 

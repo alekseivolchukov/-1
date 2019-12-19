@@ -1,0 +1,39 @@
+unit UTriangle;
+
+interface
+
+uses
+  UFigure, URectangle, SysUtils, Graphics;
+
+type
+
+TTriangle = class(TRectangle)
+private
+  FThirdPoint: TPoint;
+public
+  constructor Create(APoint: TPoint; AColor:TColor; ASecondPoint:TPoint;
+                     AThirdPoint:TPoint);
+
+  function Area:real; override;
+property ThirdPoint:TPoint
+read FThirdPoint write FThirdPoint;
+
+end;
+
+implementation
+
+constructor TTriangle.Create(APoint: TPoint; AColor:TColor; ASecondPoint:TPoint;
+                             AThirdPoint:TPoint);
+begin
+  inherited Create(APoint, AColor, ASecondPoint);
+  FThirdPoint:= AThirdPoint;
+end;
+
+function TTriangle.Area:real;
+begin
+  Result:= 0.5 * abs((SecondPoint.X - Point.X) * (ThirdPoint.Y - Point.Y) -
+                     (ThirdPoint.X - Point.X) * (SecondPoint.Y - Point.Y));
+end;
+
+end.
+ 

@@ -1,0 +1,36 @@
+unit URectangle;
+
+interface
+
+uses
+  UFigure, SysUtils, Graphics;
+
+type
+
+TRectangle = class(TFigure)
+private
+  FSecondPoint: TPoint;
+public
+  constructor Create(APoint: TPoint; AColor:TColor; ASecondPoint:TPoint);
+  function Area:real; override;
+
+property SecondPoint:TPoint
+read FSecondPoint write FSecondPoint;
+
+end;
+
+implementation
+
+constructor TRectangle.Create(APoint: TPoint; AColor:TColor; ASecondPoint:TPoint);
+begin
+  inherited Create(APoint, AColor);
+  FSecondPoint:= ASecondPoint;
+end;
+
+function TRectangle.Area:real;
+begin
+  Result:= abs((SecondPoint.Y - Point.Y) * (SecondPoint.X - Point.X));
+end;
+
+end.
+ 

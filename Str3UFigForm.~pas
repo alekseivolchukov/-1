@@ -1,0 +1,105 @@
+unit UFigForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, UFigure, UCircle, URectangle, UTriangle;
+
+type
+  TFigForm = class(TForm)
+    rgFig: TRadioGroup;
+    lbPoint: TLabel;
+    edPoint: TEdit;
+    lbSecondPoint: TLabel;
+    edSecondPoint: TEdit;
+    lbColor: TLabel;
+    cbColor: TComboBox;
+    lbThirdPoint: TLabel;
+    edThirdPoint: TEdit;
+    btAdd: TButton;
+    btExit: TButton;
+    RadioGroup1: TRadioGroup;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Label2: TLabel;
+    Edit2: TEdit;
+    Label3: TLabel;
+    ComboBox1: TComboBox;
+    Label4: TLabel;
+    Edit3: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    procedure rgFigClick(Sender: TObject);
+    procedure ClearAll;
+    procedure CircleSelected;
+    procedure RectangleSelected;
+    procedure TriangleSelected;
+    procedure btAddClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    Figure:TFigure;
+  end;
+
+var
+  FigForm: TFigForm;
+
+implementation
+
+{$R *.dfm}
+procedure TFigForm.ClearAll;
+begin
+  edPoint.Clear;
+  edSecondPoint.Clear;
+  edThirdPoint.Clear;
+end;
+
+procedure TFigForm.CircleSelected;
+begin
+  ClearAll;
+  lbSecondPoint.Caption:= 'Радиус';
+  lbThirdPoint.Visible:= false;
+  edThirdPoint.Visible:= false;
+end;
+
+procedure TFigForm.RectangleSelected;
+begin
+  ClearAll;
+  lbSecondPoint.Caption:= 'Вторая точка';
+  lbThirdPoint.Visible:= false;
+  edThirdPoint.Visible:= false;
+end;
+
+procedure TFigForm.TriangleSelected;
+begin
+  ClearAll;
+  lbSecondPoint.Caption:= 'Вторая точка';
+  lbThirdPoint.Visible:= true;
+  lbThirdPoint.Caption:= 'Третья точка';
+  edThirdPoint.Visible:= true;
+end;
+
+procedure TFigForm.rgFigClick(Sender: TObject);
+begin
+  if rgFig.ItemIndex = 0 then
+    CircleSelected
+  else if rgFig.ItemIndex = 1 then
+    RectangleSelected
+  else
+    TriangleSelected;
+end;
+
+procedure TFigForm.btAddClick(Sender: TObject);
+begin
+  if rgFig.ItemIndex = 0 then
+    begin
+    end
+  else if rgFig.ItemIndex = 1 then
+    begin
+    end
+  else
+    TriangleSelected;
+end;
+
+end.

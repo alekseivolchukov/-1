@@ -1,0 +1,17 @@
+program MainProject;
+
+uses
+  Forms,
+  UMainForm in 'UMainForm.pas' {MainForm},
+  UFigure in 'UFigure.pas',
+  UCircle in 'UCircle.pas',
+  URectangle in 'URectangle.pas',
+  UTriangle in 'UTriangle.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TMainForm, MainForm);
+  Application.Run;
+end.
