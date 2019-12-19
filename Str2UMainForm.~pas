@@ -1,0 +1,30 @@
+unit UMainForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    lbBolt1: TLabel;
+    edBolt1: TEdit;
+    lbBolt2: TLabel;
+    edBolt2: TEdit;
+    lbBolt3: TLabel;
+    edBolt3: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+end.
